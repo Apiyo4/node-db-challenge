@@ -21,4 +21,15 @@ const router = express.Router();
         console.log(e)
      }
  } )
+ router.post('/', async (req,res)=>{
+     try{
+         const body = req.body;
+         const stuff = await db.addProject(body);
+         res.json(stuff);
+
+     }catch(e){
+         console.log(e)
+     }
+ })
+
 module.exports = router;
