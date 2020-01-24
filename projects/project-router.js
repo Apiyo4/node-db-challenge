@@ -12,4 +12,13 @@ const router = express.Router();
      }
     
  })
+ router.get('/:id', async(req,res)=>{
+     try{
+        const {id} = req.params;
+        const project = await db.getProjectById(id);
+        res.json(project);
+     } catch(e){
+        console.log(e)
+     }
+ } )
 module.exports = router;
