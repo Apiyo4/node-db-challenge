@@ -10,10 +10,8 @@ function getProjectById(id){
 }
 function addProject(project){
     return db('projects')
-    .insert(project, id)
-    .then(ids=>{
-        return getProjectById(ids[0]);
-    })
+    .insert(project)
+    
 }
 function getResources(){
     return db('resources');
@@ -22,4 +20,21 @@ function getResourceById(id){
     return db('resources')
     .where({id : Number(id)}).first();
 }
-module.exports = {getProjects, getProjectById, addProject, getResources, getResourceById};
+function addResource(resource){
+    return db('resources')
+    .insert(resource)
+    
+}
+function getTasks(){
+    return db('tasks');
+}
+function getTaskById(id){
+    return db('tasks')
+    .where({id : Number(id)}).first();
+}
+function addTask(task){
+    return db('tasks')
+    .insert(task)
+    
+}
+module.exports = {getProjects, getProjectById, addProject, getResources, getResourceById, getTasks, getTaskById, addResource, addTask};

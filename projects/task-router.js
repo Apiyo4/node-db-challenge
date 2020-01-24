@@ -5,8 +5,8 @@ const db = require('./projectDb');
 const router = express.Router();
   router.get('/', async(req,res)=>{
     try{
-       const resources = await db.getResources(); 
-       res.json(resources);
+       const tasks = await db.getTasks(); 
+       res.json(tasks);
     }catch(e){
        console.log(e)
     }
@@ -15,8 +15,8 @@ const router = express.Router();
 router.get('/:id', async(req,res)=>{
     try{
        const {id} = req.params;
-       const resource = await db.getResourceById(id);
-       res.json(resource);
+       const task = await db.getTaskById(id);
+       res.json(task);
     } catch(e){
        console.log(e)
     }
@@ -25,7 +25,7 @@ router.post('/', async (req,res)=>{
     try{
         const body = req.body;
         const id = await db.addResource(body);
-        res.json(`Resource with id ${id} was added`);
+        res.json(`Task with id ${id} was added`);
 
     }catch(e){
         console.log(e)

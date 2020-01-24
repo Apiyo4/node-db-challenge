@@ -24,12 +24,13 @@ const router = express.Router();
  router.post('/', async (req,res)=>{
      try{
          const body = req.body;
-         const stuff = await db.addProject(body);
-         res.json(stuff);
+         const id = await db.addProject(body);
+         res.json(`Project with id ${id} was added`);
 
      }catch(e){
          console.log(e)
      }
  })
+ 
 
 module.exports = router;
